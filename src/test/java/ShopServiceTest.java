@@ -33,4 +33,11 @@ class ShopServiceTest {
         //THEN
         assertNull(actual);
     }
+
+    @Test
+    void sortByOrderStatus() {
+        ShopService shopService = new ShopService();
+        List<Order> orders;
+
+    }
 }
