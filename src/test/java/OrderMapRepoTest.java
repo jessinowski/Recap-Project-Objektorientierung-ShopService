@@ -13,7 +13,7 @@ class OrderMapRepoTest {
         OrderMapRepo repo = new OrderMapRepo();
 
         Product product = new Product("1", "Apfel");
-        Order newOrder = new Order("1", List.of(product), null);
+        Order newOrder = new Order("1", List.of(java.util.Optional.of(product)), null);
         repo.addOrder(newOrder);
 
         //WHEN
@@ -22,7 +22,7 @@ class OrderMapRepoTest {
         //THEN
         List<Order> expected = new ArrayList<>();
         Product product1 = new Product("1", "Apfel");
-        expected.add(new Order("1", List.of(product1), null));
+        expected.add(new Order("1", List.of(java.util.Optional.of(product1)), null));
 
         assertEquals(actual, expected);
     }
