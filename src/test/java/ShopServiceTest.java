@@ -33,4 +33,8 @@ class ShopServiceTest {
         //THEN
         assertNull(actual);
     }
+
+    @Test
+    void updateOrder() {
+    }
 }
