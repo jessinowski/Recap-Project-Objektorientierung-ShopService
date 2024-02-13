@@ -6,11 +6,13 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
-@RequiredArgsConstructor
+
 @Data
+@RequiredArgsConstructor
 public class ShopService {
     private final ProductRepo productRepo = new ProductRepo();
     private final OrderRepo orderRepo = new OrderMapRepo();
+    private IdService idService;
 
     public Order addOrder(List<String> productIds) throws NoOrderFoundException {
         List<Optional<Product>> products = new ArrayList<>();
@@ -22,7 +24,7 @@ public class ShopService {
             products.add(productToOrder);
         }
         ZonedDateTime timeStamp = ZonedDateTime.now();
-        Order newOrder = new Order(UUID.randomUUID().toString(), products, null, timeStamp);
+        Order newOrder = new Order(idService.generateId(), products, null, timeStamp);
 
         return orderRepo.addOrder(newOrder);
     }
