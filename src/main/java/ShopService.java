@@ -28,4 +28,8 @@ public class ShopService {
                 .toList();
         return ordersByStatus;
     }
+
+    public Order updateOrder(String id, OrderStatus orderStatus){
+        return orderRepo.getOrderById(id).withOrderStatus(orderStatus);
+    }
 }
