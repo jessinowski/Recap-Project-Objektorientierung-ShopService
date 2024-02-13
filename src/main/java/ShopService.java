@@ -1,3 +1,4 @@
+import java.time.ZonedDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -16,8 +17,8 @@ public class ShopService {
             }
             products.add(productToOrder);
         }
-
-        Order newOrder = new Order(UUID.randomUUID().toString(), products, null);
+        ZonedDateTime timeStamp = ZonedDateTime.now();
+        Order newOrder = new Order(UUID.randomUUID().toString(), products, null, timeStamp);
 
         return orderRepo.addOrder(newOrder);
     }
